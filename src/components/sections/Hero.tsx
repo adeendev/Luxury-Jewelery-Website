@@ -5,7 +5,6 @@ import heroImage from "@/assets/cbw-hero.jpg";
 
 export const Hero = () => {
   const [tiltStyle, setTiltStyle] = useState<CSSProperties>({});
-  const [shimmerStyle, setShimmerStyle] = useState<CSSProperties>({});
 
   const handleMouseMove = (event: MouseEvent<HTMLDivElement>) => {
     const bounds = event.currentTarget.getBoundingClientRect();
@@ -21,12 +20,6 @@ export const Hero = () => {
       transform: `perspective(1400px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg)` ,
     });
 
-    const percentX = (x / bounds.width) * 100;
-    const percentY = (y / bounds.height) * 100;
-    setShimmerStyle({
-      ["--mouse-x" as string]: `${percentX}%`,
-      ["--mouse-y" as string]: `${percentY}%`,
-    });
   };
 
   const resetTilt = () => {
@@ -36,25 +29,25 @@ export const Hero = () => {
   return (
     <section
       id="top"
-      className="cbw-section relative overflow-hidden bg-hero-radial"
+      className="relative w-full pb-16 md:pb-24 lg:pb-28 overflow-hidden bg-hero-radial"
       aria-label="Crowned by William luxury jewelry hero"
     >
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_-10%,hsl(var(--primary)/0.18),transparent_55%),radial-gradient(circle_at_80%_120%,hsl(var(--primary)/0.12),transparent_55%)] opacity-70" />
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_bottom,transparent,rgba(0,0,0,0.85))]" />
 
       <div
-        className="cbw-shell relative z-10 min-h-[calc(100vh-5rem)] items-center justify-center gap-12 lg:flex lg:flex-row"
+        className="cbw-shell relative z-10 min-h-[calc(100vh_-_var(--nav-height))] items-center justify-center gap-10 md:gap-12 lg:flex lg:flex-row"
         onMouseMove={handleMouseMove}
         onMouseLeave={resetTilt}
       >
-        <div className="flex-1 space-y-7 md:space-y-9" style={tiltStyle}>
+        <div className="flex-1 space-y-7 md:space-y-9">
           <p className="cbw-tag animate-fade-in">Luxury Pieces With Purpose</p>
+          <div className="h-px w-12 bg-gradient-to-r from-transparent via-gold-soft to-gold" />
 
           <h1
-            className="cbw-gold-text animate-fade-up-delayed text-4xl leading-[1.1] md:text-6xl lg:text-[4.5rem] lg:leading-[1.05] tracking-[0.18em] uppercase"
-            style={shimmerStyle}
+            className="cbw-gold-text animate-fade-up-delayed text-[clamp(2rem,8vw,4.5rem)] leading-[1.1] lg:leading-[1.05] tracking-[0.18em] uppercase"
           >
-            Crowned by William
+            Crown by Williams
           </h1>
 
           <p className="max-w-xl text-sm leading-relaxed text-muted-foreground md:text-base">
@@ -79,7 +72,7 @@ export const Hero = () => {
 
         <div className="flex-1">
           <div
-            className="relative w-full max-w-xl translate-y-4 self-end rounded-none border border-border bg-secondary/40 p-4 shadow-gold-soft backdrop-blur cbw-hero-glow hover-scale-strong"
+            className="relative w-full max-w-lg md:max-w-xl translate-y-2 md:translate-y-0 self-end rounded-none border border-border bg-secondary/40 p-4 shadow-gold-soft backdrop-blur cbw-hero-glow hover-scale-strong"
             style={tiltStyle}
           >
             <div className="relative overflow-hidden">

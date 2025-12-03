@@ -70,55 +70,53 @@ export const CrownedLayout = ({ children }: CrownedLayoutProps) => {
     <div className="min-h-screen bg-background text-foreground">
       <header
         className={cn(
-          "fixed inset-x-0 top-0 z-40 flex h-[var(--nav-height)] items-center transition-all duration-400",
+          "fixed inset-x-0 top-0 z-40 flex min-h-[3.25rem] md:min-h-[var(--nav-height)] items-center py-1 md:py-3 transition-all duration-400",
           scrolled
             ? "border-b border-border bg-background/92 backdrop-blur shadow-elevated-soft"
             : "bg-gradient-to-b from-background/80 via-background/40 to-transparent",
         )}
       >
-        <div className="cbw-shell flex items-center justify-between gap-6">
-          <div className="flex items-center gap-3 animate-fade-in" style={{ animationDelay: "0.05s" }}>
-            <div className="flex h-9 w-9 items-center justify-center border border-border/80 bg-secondary/40 text-xs font-semibold tracking-[0.18em] uppercase text-primary">
-              CBW
-            </div>
-            <div className="flex flex-col leading-tight">
-              <span className="font-display text-sm tracking-[0.28em] text-muted-foreground uppercase">Crowned by</span>
-              <span className="font-display text-lg tracking-[0.24em]">WILLIAM</span>
-            </div>
+        <div className="cbw-shell flex flex-row items-center justify-between gap-3 md:gap-6">
+          <div className="flex items-center animate-fade-in" style={{ animationDelay: "0.05s" }}>
+            <span className="font-display text-sm md:text-base tracking-[0.22em]">Crown by Williams</span>
           </div>
 
-          <nav className="hidden items-center gap-8 text-xs font-medium uppercase tracking-[0.24em] md:flex">
+          <nav className="hidden items-center gap-6 xl:gap-8 text-xs font-medium uppercase tracking-[0.24em] md:flex">
             {navLinks.map((link) => (
               <button
                 key={link.id}
                 type="button"
                 onClick={() => handleNavClick(link.href)}
                 className={cn(
-                  "relative text-muted-foreground transition-colors duration-300 hover:text-foreground",
-                  activeSection === link.id && "text-gold-soft",
+                  "text-muted-foreground transition-colors duration-300 hover:text-foreground",
+                  activeSection === link.id && "text-foreground",
                 )}
               >
-                <span className="story-link">{link.label}</span>
+                <span
+                  className="story-link"
+                  data-active={activeSection === link.id}
+                  aria-current={activeSection === link.id ? "true" : undefined}
+                >
+                  {link.label}
+                </span>
               </button>
             ))}
+            <div className="ml-6 flex items-center gap-3">
+              <Button variant="ghost" size="sm" className="text-[0.68rem] uppercase tracking-[0.2em]">
+                Dallas, TX
+              </Button>
+              <Button
+                variant="hero"
+                size="sm"
+                className="text-[0.7rem] uppercase tracking-[0.22em]"
+                onClick={() => handleNavClick("#contact")}
+              >
+                Commission Your Legacy
+              </Button>
+            </div>
           </nav>
 
           <div className="flex items-center gap-2 md:gap-3">
-            <Button
-              variant="ghost"
-              size="sm"
-              className="hidden text-[0.68rem] uppercase tracking-[0.2em] md:inline-flex"
-            >
-              Dallas, TX
-            </Button>
-            <Button
-              variant="hero"
-              size="sm"
-              className="hidden text-[0.7rem] uppercase tracking-[0.22em] md:inline-flex"
-              onClick={() => handleNavClick("#contact")}
-            >
-              Commission Your Legacy
-            </Button>
             <button
               type="button"
               className="inline-flex h-9 w-9 items-center justify-center rounded-none border border-border bg-background/60 text-muted-foreground transition-colors hover:border-gold-soft hover:text-gold-soft md:hidden"
@@ -132,7 +130,7 @@ export const CrownedLayout = ({ children }: CrownedLayoutProps) => {
       </header>
 
       {menuOpen && (
-        <div className="fixed inset-x-0 top-[var(--nav-height)] z-30 border-b border-border bg-background/98 pb-4 pt-3 shadow-elevated-soft animate-slide-in-right md:hidden">
+        <div className="fixed inset-x-0 top-[3.25rem] md:top-[var(--nav-height)] z-30 border-b border-border bg-background/98 pb-3 pt-2 shadow-elevated-soft animate-slide-in-right md:hidden">
           <div className="cbw-shell flex flex-col gap-4 text-xs font-medium uppercase tracking-[0.22em]">
             {navLinks.map((link) => (
               <button
@@ -140,18 +138,29 @@ export const CrownedLayout = ({ children }: CrownedLayoutProps) => {
                 type="button"
                 onClick={() => handleNavClick(link.href)}
                 className={cn(
-                  "flex items-center justify-between py-1 text-muted-foreground transition-colors duration-300 hover:text-foreground",
-                  activeSection === link.id && "text-gold-soft",
+                  "flex items-center justify-between py-0.5 text-[0.62rem] tracking-[0.18em] text-muted-foreground transition-colors duration-300 hover:text-foreground",
+                  activeSection === link.id && "text-foreground",
                 )}
               >
-                <span>{link.label}</span>
-                <span className="h-px w-10 bg-gradient-to-r from-transparent via-gold-soft to-transparent" />
+                <span
+                  className="story-link"
+                  data-active={activeSection === link.id}
+                  aria-current={activeSection === link.id ? "true" : undefined}
+                >
+                  {link.label}
+                </span>
+                <span
+                  className={cn(
+                    "h-px w-10 bg-gradient-to-r from-transparent via-gold-soft to-transparent transition-opacity",
+                    activeSection === link.id ? "opacity-100" : "opacity-0",
+                  )}
+                />
               </button>
             ))}
             <Button
               variant="hero"
               size="sm"
-              className="mt-1 w-full text-[0.7rem] uppercase tracking-[0.22em]"
+              className="mt-1 w-full text-[0.66rem] uppercase tracking-[0.2em]"
               onClick={() => handleNavClick("#contact")}
             >
               Commission Your Legacy
@@ -160,7 +169,7 @@ export const CrownedLayout = ({ children }: CrownedLayoutProps) => {
         </div>
       )}
 
-      <main className="pt-[calc(var(--nav-height)_+_1.5rem)]">{children}</main>
+      <main className="pt-14 md:pt-[calc(var(--nav-height)_+_1rem)]">{children}</main>
 
       <footer className="border-t border-border bg-background/95">
         <div className="cbw-shell flex flex-col items-start justify-between gap-4 py-6 text-xs text-muted-foreground md:flex-row">

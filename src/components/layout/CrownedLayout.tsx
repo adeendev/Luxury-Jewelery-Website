@@ -130,7 +130,7 @@ export const CrownedLayout = ({ children }: CrownedLayoutProps) => {
       </header>
 
       {menuOpen && (
-        <div className="fixed inset-x-0 top-[3.25rem] md:top-[var(--nav-height)] z-30 border-b border-border bg-background/98 pb-3 pt-2 shadow-elevated-soft animate-slide-in-right md:hidden">
+        <div className="fixed inset-x-0 top-[3.25rem] md:top-[var(--nav-height)] z-30 border-b border-border bg-background pb-3 pt-2 shadow-elevated-soft animate-slide-in-right md:hidden">
           <div className="cbw-shell flex flex-col gap-4 text-xs font-medium uppercase tracking-[0.22em]">
             {navLinks.map((link) => (
               <button

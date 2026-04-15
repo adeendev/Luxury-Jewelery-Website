@@ -76,20 +76,20 @@ export const CrownedLayout = ({ children }: CrownedLayoutProps) => {
             : "bg-gradient-to-b from-background/80 via-background/40 to-transparent",
         )}
       >
-        <div className="cbw-shell flex flex-row items-center justify-between gap-3 md:gap-6">
-          <div className="flex items-center animate-fade-in" style={{ animationDelay: "0.05s" }}>
-            <span className="font-display text-sm md:text-base tracking-[0.22em] whitespace-nowrap">C.B.W</span>
+        <div className="cbw-shell flex flex-row items-center gap-3 md:gap-6">
+          <div className="flex items-center animate-fade-in shrink-0" style={{ animationDelay: "0.05s" }}>
+            <span className="font-display text-base md:text-lg tracking-[0.28em] whitespace-nowrap cbw-gold-text">C.B.W</span>
           </div>
 
-          <nav className="hidden items-center gap-6 xl:gap-8 text-xs font-medium uppercase tracking-[0.24em] md:flex">
+          <nav className="hidden items-center gap-5 xl:gap-7 text-[0.65rem] font-medium uppercase tracking-[0.22em] md:flex mx-auto">
             {navLinks.map((link) => (
               <button
                 key={link.id}
                 type="button"
                 onClick={() => handleNavClick(link.href)}
                 className={cn(
-                  "text-muted-foreground transition-colors duration-300 hover:text-foreground",
-                  activeSection === link.id && "text-foreground",
+                  "text-muted-foreground transition-all duration-300 hover:text-gold-soft",
+                  activeSection === link.id && "text-gold-soft",
                 )}
               >
                 <span
@@ -101,20 +101,18 @@ export const CrownedLayout = ({ children }: CrownedLayoutProps) => {
                 </span>
               </button>
             ))}
-            <div className="ml-6 flex items-center gap-3">
-              <Button variant="ghost" size="sm" className="text-[0.68rem] uppercase tracking-[0.2em]">
-                Dallas, TX
-              </Button>
-              <Button
-                variant="hero"
-                size="sm"
-                className="text-[0.7rem] uppercase tracking-[0.22em]"
-                onClick={() => handleNavClick("#contact")}
-              >
-                Commission Your Legacy
-              </Button>
-            </div>
           </nav>
+
+          <div className="hidden md:flex items-center shrink-0 ml-auto">
+            <Button
+              variant="hero"
+              size="sm"
+              className="text-[0.6rem] uppercase tracking-[0.18em] px-5 py-1.5 h-8"
+              onClick={() => handleNavClick("#contact")}
+            >
+              Commission
+            </Button>
+          </div>
 
           <div className="flex items-center gap-2 md:gap-3">
             <button

@@ -9,11 +9,11 @@ interface CrownedLayoutProps {
 }
 
 const navLinks = [
-  { id: "collections", href: "#collections", label: "Collections" },
-  { id: "custom", href: "#custom", label: "Custom Studio" },
-  { id: "about", href: "#about", label: "The Story" },
+  { id: "collections", href: "#collections", label: "Pieces" },
+  { id: "custom", href: "#custom", label: "Custom" },
+  { id: "about", href: "#about", label: "Story" },
   { id: "gallery", href: "#gallery", label: "Gallery" },
-  { id: "contact", href: "#contact", label: "Visit the Vault" },
+  { id: "contact", href: "#contact", label: "Contact" },
 ];
 
 export const CrownedLayout = ({ children }: CrownedLayoutProps) => {
@@ -78,7 +78,7 @@ export const CrownedLayout = ({ children }: CrownedLayoutProps) => {
       >
         <div className="cbw-shell flex flex-row items-center justify-between gap-3 md:gap-6">
           <div className="flex items-center animate-fade-in" style={{ animationDelay: "0.05s" }}>
-            <span className="font-display text-sm md:text-base tracking-[0.22em]">Crown by Williams</span>
+            <span className="font-display text-sm md:text-base tracking-[0.22em] whitespace-nowrap">C.B.W</span>
           </div>
 
           <nav className="hidden items-center gap-6 xl:gap-8 text-xs font-medium uppercase tracking-[0.24em] md:flex">

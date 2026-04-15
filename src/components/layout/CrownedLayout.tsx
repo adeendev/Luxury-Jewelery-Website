@@ -70,7 +70,7 @@ export const CrownedLayout = ({ children }: CrownedLayoutProps) => {
     <div className="min-h-screen bg-background text-foreground">
       <header
         className={cn(
-          "fixed inset-x-0 top-0 z-40 flex min-h-[3.25rem] md:min-h-[var(--nav-height)] items-center py-1 md:py-3 transition-all duration-400",
+          "fixed inset-x-0 top-0 z-40 flex h-12 md:h-14 items-center transition-all duration-400",
           scrolled
             ? "border-b border-border bg-background/92 backdrop-blur shadow-elevated-soft"
             : "bg-gradient-to-b from-background/80 via-background/40 to-transparent",
@@ -130,7 +130,7 @@ export const CrownedLayout = ({ children }: CrownedLayoutProps) => {
       </header>
 
       {menuOpen && (
-        <div className="fixed inset-x-0 top-[3.25rem] md:top-[var(--nav-height)] z-30 border-b border-border bg-background pb-3 pt-2 shadow-elevated-soft animate-slide-in-right md:hidden">
+        <div className="fixed inset-x-0 top-12 md:top-14 z-30 border-b border-border bg-background pb-3 pt-2 shadow-elevated-soft animate-slide-in-right md:hidden">
           <div className="cbw-shell flex flex-col gap-4 text-xs font-medium uppercase tracking-[0.22em]">
             {navLinks.map((link) => (
               <button
@@ -169,7 +169,7 @@ export const CrownedLayout = ({ children }: CrownedLayoutProps) => {
         </div>
       )}
 
-      <main className="pt-14 md:pt-[calc(var(--nav-height)_+_1rem)]">{children}</main>
+      <main className="pt-12 md:pt-14">{children}</main>
 
       <footer className="border-t border-border bg-background/95">
         <div className="cbw-shell flex flex-col items-start justify-between gap-4 py-6 text-xs text-muted-foreground md:flex-row">

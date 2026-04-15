@@ -36,7 +36,7 @@ export const Hero = () => {
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_bottom,transparent,rgba(0,0,0,0.85))]" />
 
       <div
-        className="cbw-shell relative z-10 min-h-[calc(100vh_-_var(--nav-height))] items-center justify-center gap-10 md:gap-12 lg:flex lg:flex-row"
+        className="cbw-shell relative z-10 flex flex-col lg:flex-row min-h-[calc(100vh_-_var(--nav-height))] items-center justify-center gap-10 md:gap-12"
         onMouseMove={handleMouseMove}
         onMouseLeave={resetTilt}
       >

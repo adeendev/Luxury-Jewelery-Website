@@ -77,11 +77,11 @@ export const CrownedLayout = ({ children }: CrownedLayoutProps) => {
         )}
       >
         <div className="cbw-shell relative flex flex-row items-center justify-between">
-          <div className="flex items-center animate-fade-in shrink-0" style={{ animationDelay: "0.05s" }}>
+          <div className="flex items-center animate-fade-in shrink-0 w-1/3" style={{ animationDelay: "0.05s" }}>
             <span className="font-display text-base md:text-lg tracking-[0.28em] whitespace-nowrap cbw-gold-text">C.B.W</span>
           </div>
 
-          <nav className="hidden md:flex items-center gap-5 xl:gap-7 text-[0.65rem] font-medium uppercase tracking-[0.22em] absolute left-1/2 -translate-x-1/2">
+          <nav className="hidden md:flex items-center justify-center gap-5 xl:gap-7 text-[0.65rem] font-medium uppercase tracking-[0.22em] flex-1">
             {navLinks.map((link) => (
               <button
                 key={link.id}
@@ -103,7 +103,7 @@ export const CrownedLayout = ({ children }: CrownedLayoutProps) => {
             ))}
           </nav>
 
-          <div className="hidden md:flex items-center shrink-0 relative z-10">
+          <div className="hidden md:flex items-center justify-end shrink-0 w-1/3">
             <Button
               variant="hero"
               size="sm"

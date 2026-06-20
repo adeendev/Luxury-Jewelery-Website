@@ -103,7 +103,7 @@ export const CrownedLayout = ({ children }: CrownedLayoutProps) => {
             ))}
           </nav>
 
-          <div className="hidden md:flex items-center shrink-0">
+          <div className="hidden md:flex items-center shrink-0 relative z-10">
             <Button
               variant="hero"
               size="sm"
